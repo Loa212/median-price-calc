@@ -5,7 +5,7 @@ export default component$(() => {
   return (
     <div>
       <h1 class={`text-center text-4xl`}>
-        Welcome to Qwik <span class="lightning">⚡️</span>
+        Calculate median price <span class="lightning">⚡️</span>
       </h1>
     </div>
   );

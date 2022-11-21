@@ -1,16 +1,67 @@
 import { component$, Slot } from "@builder.io/qwik";
 // import Header from "../components/header/header";
-import { Menu } from "../components/icons";
+import {
+  Menu,
+  Folder,
+  Download,
+  HelpCircle,
+  Settings,
+  Star,
+  Code,
+} from "../components/icons";
 
 export default component$(() => {
   return (
     <body class={`absolute inset-0 flex flex-col justify-start`}>
       <header class={"grow-0 bg-[#121212] text-white p-4"}>
-        <button
-          class={`p-2 bg-gray-800 hover:bg-gray-700 ring-1 ring-gray-700 hover:ring-gray-500 rounded-md`}
-        >
-          <Menu size={14} color="#c1c1c1" />
-        </button>
+        <div className="dropdown">
+          <label tabIndex={0} className="btn m-1  hover:bg-gray-700">
+            <Menu size={14} color="#c1c1c1" />
+          </label>
+          <ul
+            tabIndex={0}
+            className="dropdown-content menu p-2 shadow bg-base-100 rounded-md w-48 space-y-2"
+          >
+            <li>
+              <label class={` active:bg-slate-400`}>
+                <input type="file" class={`hidden`} />
+                <Folder size={18} />
+                Open
+              </label>
+            </li>
+            <li>
+              <a class={`active:bg-slate-400`}>
+                <Download size={18} />
+                Save to...
+              </a>
+            </li>
+            <li>
+              <a class={`active:bg-slate-400`}>
+                <HelpCircle size={24} />
+                Help
+              </a>
+            </li>
+            <li>
+              <a class={`active:bg-slate-400`}>
+                <Settings size={18} />
+                Settings
+              </a>
+            </li>
+            <hr />
+            <li>
+              <a class={`active:bg-slate-400`}>
+                <Star size={18} />
+                Star on GitHub
+              </a>
+            </li>
+            <li>
+              <a class={`active:bg-slate-400`}>
+                <Code size={18} />
+                Contribute
+              </a>
+            </li>
+          </ul>
+        </div>
       </header>
       <main class={`bg-[#121212] grow text-white flex flex-col items-start`}>
         {/* <Header /> */}
