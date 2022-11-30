@@ -1,4 +1,4 @@
-import { component$, Slot } from "@builder.io/qwik";
+import { component$, Slot, useStore } from "@builder.io/qwik";
 // import Header from "../components/header/header";
 import {
   Menu,
@@ -82,6 +82,54 @@ export default component$(() => {
           Made with ♡ by Loa212
         </a>
       </footer>
+      <CookieBanner />
     </body>
+  );
+});
+
+export const CookieBanner = component$(() => {
+  const state = useStore({
+    showCookieBanner: true,
+  });
+
+  if (!state.showCookieBanner) {
+    return null;
+  }
+
+  return (
+    <div class="absolute bottom-4 w-full ">
+      <div class=" max-w-3xl mx-auto alert shadow-lg">
+        <div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            class="stroke-info flex-shrink-0 w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            ></path>
+          </svg>
+          <span>we use cookies for no reason.</span>
+        </div>
+        <div class="flex-none">
+          <button
+            onClick$={() => (state.showCookieBanner = false)}
+            class="btn btn-sm btn-ghost"
+          >
+            wtf ? no
+          </button>
+          <button
+            onClick$={() => (state.showCookieBanner = false)}
+            class="btn btn-sm btn-primary"
+          >
+            Ok i understand
+          </button>
+        </div>
+      </div>
+    </div>
   );
 });
